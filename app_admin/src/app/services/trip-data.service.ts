@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Trip } from '../models/trip';
+import { Trip } from '../../../models/trip';
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +32,12 @@ export class TripDataService {
   }
 
   public getTrips(): Promise<Trip[]> {
-    console.log('Inside TripDataService#getTrips');
+    console.log("Inside TripDataService#getTrips");
     return this.http
-    .get(this.tripUrl)
-    .toPromise()
-    .then(response => response.json() as Trip[])
-    .catch(this.handleError);
+      .get(`${this.apiBaseUrl}trips`)
+      .toPromise()
+      .then((response) => response.json() as Trip[])
+      .catch(this.handleError);
   }
 
   public updateTrip(formData: Trip): Promise<Trip> {

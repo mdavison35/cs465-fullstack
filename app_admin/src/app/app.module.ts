@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { JsonPipe} from '@angular/common';
+//import { JsonPipe} from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { ReactiveFormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-router.module';
 import { TripListingComponent } from './trip-listing/trip-listing.component';
 import { TripCardComponent } from './trip-card/trip-card.component';
-import { TripDataService } from 'services/trip-data.service';
+import { TripDataService } from './services/trip-data.service';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
 
@@ -23,10 +23,11 @@ import { EditTripComponent } from './edit-trip/edit-trip.component';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [{ provide: JsonPipe}, TripDataService],
+  providers: [TripDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
